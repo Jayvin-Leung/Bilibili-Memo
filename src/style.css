@@ -1,0 +1,16 @@
+.custom-row {
+  width: 100%;
+  padding: 6px 10px;
+}
+.custom-row:hover {
+  background-color: aliceblue;
+}
+.custom-col-label {
+  font-size: 16px;
+  height: 32px;
+  line-height: 32px;
+}
+.custom-col-content {
+  height: 32px;
+  line-height: 32px;
+}

@@ -1,0 +1,10 @@
+.bili-video-card__remark {
+  position: absolute;
+  top: 38%;
+  right: -4px;
+  z-index: 999;
+}
+.collection__remark {
+  padding: 20px 20px 0 20px;
+  border-top: 1px solid #e3e5e7;
+}
