@@ -51,6 +51,7 @@ export default defineConfig({
         match: [
           'https://www.bilibili.com/',
           'https://www.bilibili.com/video/*',
+          'https://www.bilibili.com/list/*',
           'https://space.bilibili.com/*/favlist*',
         ],
         require: [

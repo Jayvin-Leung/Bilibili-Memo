@@ -40,8 +40,8 @@ export const episodeOutlinkHandler = (fileName) => {
   const md = mdOutlink(fileName);
   const wiki = wikiOutlink(fileName);
   return config.option.note.mode === 'obsidian'
-    ? `[[${wiki.link}|${wiki.display}]]`
-    : `[${md.display}](${md.link})`;
+    ? `[[${wiki.link}|${wiki.display.slice(0, -3)}]]`
+    : `[${md.display.slice(0, -3)}](${md.link})`;
 };
 
 export const pageOutlinkHandler = (fileName) => {

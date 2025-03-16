@@ -3,7 +3,10 @@ import ConfigRef from '@/entity/ConfigRef';
 
 const pluginConfig = new PluginConfig({
   base: {
-    match: ['https://www.bilibili.com/video/{{bvid}}/'],
+    match: [
+      'https://www.bilibili.com/video/*/',
+      'https://www.bilibili.com/list/*/',
+    ],
     isActive: false,
     isOnlySwitchCurrActive: true,
   },

@@ -75,15 +75,19 @@ const getNoteFiles = async (bvid) => {
   const files = [];
   const result = await viewApi(bvid);
 
-  if (result.is_season_display && !config.option.isOnlyCurr) {
-    const episodes = result.ugc_season?.sections?.[0]?.episodes;
+  if (result.ugc_season && !config.option.isOnlyCurr) {
+    const episodes = result.ugc_season.sections?.reduce((acc, curr) => {
+      return acc.concat(curr?.episodes || []);
+    }, []);
     if (!episodes || !episodes.length || episodes.length === 0) return [];
 
     const upUid = result.ugc_season.mid;
     const seasonId = result.ugc_season.id;
     if (!upUid || !seasonId) return [];
 
-    for (const item of episodes) {
+    for (let i = 0; i < episodes.length; i++) {
+      const item = episodes[i];
+      item.title = `${i + 1}. ${item.title}`;
       files.push(await getNoteFile(item));
     }
 
@@ -104,7 +108,7 @@ const getNoteFiles = async (bvid) => {
     const catalogs = catalog.data();
     const catalogText = catalogTemplate.render({ catalogs });
 
-    const fileName = '合集目录.md';
+    const fileName = '0. 合集目录.md';
     const fileContent = fileTemplate.render({ info, catalog: catalogText });
     files.push({ fileName, fileContent });
   } else {
@@ -163,6 +167,9 @@ export const click = () => {
     return;
   }
   imageActionHandler = imageHandler('附件');
-  messageModal({ title: '信息', message: '处理中……下载完成后请手动关闭弹窗！' });
+  messageModal({
+    title: '信息',
+    message: '处理中……视频数量越多需要时间越长。下载完成后请手动关闭弹窗！',
+  });
   downloadNote(bvid);
 };
