@@ -106,8 +106,8 @@ const initListPageNext = async () => {
       ) {
         clearInterval(timerId);
         timerId = null;
-        const single = '.actionlist-item-inner.singlep-list-item-inner';
-        const multip = '.actionlist-item-inner.multip-list-item-inner .multip-list-item';
+        const single = '.singlep-list-item-inner';
+        const multip = '.multip-list-item-inner .multip-list-item';
         eplist = list.querySelectorAll(`${single}, ${multip}`);
         if (eplist && eplist.length > 0) {
           for (const item of eplist) {
